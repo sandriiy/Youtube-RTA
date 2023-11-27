@@ -1,0 +1,39 @@
+.ansukh-data-container {
+    width: 100%;
+    margin: 3% auto 1% auto;
+}
+
+.ansukh-no-data-container {
+    width: 100%;
+    text-align: center;
+    
+    font-size: 12px;
+    font-weight: 600;
+    color: #7E7E7E;
+}
+
+.ansukh-data-item {
+    width: 80%;
+    margin: 0.5% auto;
+    padding-bottom: 1%;
+    border-bottom: 0.5px dashed #E3E1E1;
+
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.ansukh-data-item-name {
+    display: flex;
+    gap: 5%;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.ansukh-data-item-name p {
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+.ansukh-data-buttons {
+    margin: auto 0 auto auto;
+}

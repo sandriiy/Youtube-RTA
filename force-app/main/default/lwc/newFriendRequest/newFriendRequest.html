@@ -1,0 +1,48 @@
+<template>
+    <!-- A data loading/processing spinner that is displayed only depending on the specified condition (if the condition is true) -->
+    <!-- https://developer.salesforce.com/docs/component-library/bundle/lightning-spinner/example -->
+    <lightning-spinner if:true={isLoading} alternative-text="Loading" size="small"></lightning-spinner>
+    
+    <div class="ansukh-request-container">
+        <lightning-card title="New Friend Request" icon-name="standard:asset_relationship">
+            <!-- The upper right section with the references -->
+            <lightning-breadcrumbs slot="actions">
+                <lightning-breadcrumb
+                    label="YouTube"
+                    href="https://www.youtube.com/@asukhetskyi">
+                </lightning-breadcrumb>
+                <lightning-breadcrumb
+                    label="Real-Time"
+                    href="https://www.youtube.com/watch?v=0fs_Dou3C2k">
+                </lightning-breadcrumb>
+            </lightning-breadcrumbs>
+
+            <!-- Section for displaying the picklist -->
+            <div class="ansukh-request-action">
+                <lightning-combobox
+                    name="newrequest"
+                    label="Select User"
+                    value={selectedUser}
+                    options={users}
+                    onchange={handleChangeUser}>
+                </lightning-combobox>
+            </div>
+
+            <!-- 
+                The section of the bottom footer of the lightning card.
+                <lightning-card> is part of the Salesforce library, where all content is concentrated.
+                Reference: https://developer.salesforce.com/docs/component-library/bundle/lightning-card/example
+            -->
+            <div slot="footer">
+                <lightning-button 
+                    variant="brand"
+                    label="Send"
+                    title="Send a new friend request" 
+                    icon-name="utility:send"
+                    onclick={handleNewFriendRequest}
+                    class="ansukh-request-send">
+                </lightning-button>
+            </div>
+        </lightning-card>
+    </div>
+</template>

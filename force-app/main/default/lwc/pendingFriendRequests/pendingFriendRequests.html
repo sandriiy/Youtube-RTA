@@ -1,0 +1,46 @@
+<template>
+    <lightning-card title="Pending Requests" icon-name="standard:team_member">
+        <!-- Upper right button to unsubscribe from the event (to resolve) -->
+        <!-- https://developer.salesforce.com/docs/platform/lwc/guide/use-message-channel-subscribe.html -->
+        <lightning-button label="Mute" icon-name="utility:volume_high" slot="actions"></lightning-button>
+
+        <div lwc:if={isDataToDisplay} class="ansukh-data-container">
+            <template for:each={requests} for:item="request">
+                <div key={requests.id} class="ansukh-data-item">
+                    <!-- A section on the right about the information about the user (Name, Mutual Friends, Status) -->
+                    <div class="ansukh-data-item-name">
+                        <lightning-tile label={request.name} href="/user/" type="media">
+                            <lightning-avatar slot="media" src="https://www.lightningdesignsystem.com/assets/images/avatar1.jpg" fallback-icon-name="standard:person_account" alternative-text={request.name}></lightning-avatar>
+                            <ul class="slds-list_horizontal slds-has-dividers_right">
+                                <li class="slds-item">{request.common}</li>
+                                <li class="slds-item">{pendingStatusName}</li>
+                            </ul>
+                        </lightning-tile>
+                    </div>
+
+                    <!-- Action buttons for accepting or declining a request -->
+                    <div class="ansukh-data-buttons">
+                        <lightning-button 
+                            variant="brand"
+                            label="Accept"
+                            title="Accept the friend request" 
+                            icon-name="utility:check"
+                            class="slds-m-right_x-small">
+                        </lightning-button>
+                        <lightning-button 
+                            variant="brand-outline"
+                            label="Decline"
+                            title="Decline the friend request" 
+                            icon-name="utility:close">
+                        </lightning-button>
+                    </div>
+                </div>
+            </template>
+        </div>
+
+        <!-- The section displays missing data information if no records are found -->
+        <div lwc:else class="ansukh-no-data-container">
+            No data to display
+        </div>
+    </lightning-card>
+</template>
